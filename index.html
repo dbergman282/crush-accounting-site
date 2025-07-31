@@ -1,36 +1,84 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Crush Accounting</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Crush Accounting – Coming Soon</title>
   <style>
     body {
-      font-family: sans-serif;
-      text-align: center;
-      background: #f9f9f9;
       margin: 0;
-      padding: 40px;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #ffe8ec, #fdfcfb);
+      color: #333;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 2rem;
+      text-align: center;
     }
+
     h1 {
+      font-size: 2.8rem;
+      margin-bottom: 0.5rem;
       color: #d94a38;
     }
-    .store-badges img {
+
+    p {
+      font-size: 1.2rem;
+      max-width: 600px;
+      margin: 0.5rem 0 2rem;
+    }
+
+    .badges img {
       height: 60px;
-      margin: 10px;
+      margin: 0.5rem;
+    }
+
+    a.button {
+      display: inline-block;
+      margin-top: 2rem;
+      padding: 0.75rem 1.5rem;
+      background-color: #d94a38;
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      transition: background-color 0.3s;
+    }
+
+    a.button:hover {
+      background-color: #bb3d2c;
+    }
+
+    footer {
+      margin-top: 4rem;
+      font-size: 0.9rem;
+      color: #888;
     }
   </style>
 </head>
 <body>
   <h1>Crush Accounting</h1>
-  <p>A Candy Crush-style mobile game that teaches you basic accounting.</p>
-  <p>Match icons, earn points, and master accounting principles as you play!</p>
+  <p>
+    A match-3 mobile game that teaches real accounting concepts in a fun, addictive way.<br>
+    Like Candy Crush — but with ledgers.
+  </p>
 
-  <div class="store-badges">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/5/5f/Available_on_the_App_Store_(black)_SVG.svg" alt="Coming to Apple App Store">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Coming to Google Play Store">
+  <p><strong>Coming soon</strong> to iOS and Android!</p>
+
+  <div class="badges">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/5/5f/Available_on_the_App_Store_(black)_SVG.svg" alt="App Store Coming Soon">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Google Play Coming Soon">
   </div>
 
-  <p><em>Coming Fall 2025</em></p>
-  <p>Learn more or play the demo at <a href="https://your-streamlit-url" target="_blank">our preview</a>.</p>
+  <a href="https://your-streamlit-url-here" class="button" target="_blank">
+    Try the Web Demo
+  </a>
+
+  <footer>
+    &copy; 2025 Gamification State. All rights reserved.
+  </footer>
 </body>
 </html>
