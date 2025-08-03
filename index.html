@@ -1,102 +1,134 @@
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Crush Accounting – Learn Accounting While You Play</title>
-  <link rel="icon" type="image/x-icon" href="favicon.ico" />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --terracotta: #C1583B;
-      --light-bg: #F9F6F1;
-      --accent: #A6452A;
-    }
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Crush Accounting – Learn Accounting While You Play</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+      :root {
+        --terracotta: #C1583B;
+        --light-bg: #F9F6F1;
+        --accent: #A6452A;
+      }
 
-    body {
-      margin: 0;
-      font-family: 'Poppins', sans-serif;
-      background: var(--light-bg);
-      color: #2E2E2E;
-    }
+      body {
+        margin: 0;
+        font-family: 'Poppins', sans-serif;
+        background: var(--light-bg);
+        color: #2E2E2E;
+      }
 
-    header {
-      background: var(--terracotta);
-      color: white;
-      padding: 4rem 2rem;
-      text-align: center;
-    }
+      header {
+        background: var(--terracotta);
+        color: white;
+        padding: 4rem 2rem;
+        text-align: center;
+      }
 
-    header img {
-      width: 100px;
-      margin-bottom: 1rem;
-    }
+      header img {
+        width: 100px;
+        margin-bottom: 1rem;
+      }
 
-    header h1 {
-      font-size: 3rem;
-      margin-bottom: 0.5rem;
-    }
-
-    header p {
-      font-size: 1.25rem;
-      margin: 0;
-    }
-
-    main {
-      padding: 3rem 2rem;
-      text-align: center;
-    }
-
-    .highlight {
-      font-weight: 600;
-      color: var(--terracotta);
-    }
-
-    .store-buttons {
-      margin-top: 2rem;
-    }
-
-    .store-buttons a {
-      display: inline-block;
-      margin: 0.5rem;
-      transition: transform 0.2s;
-    }
-
-    .store-buttons a:hover {
-      transform: scale(1.05);
-    }
-
-    .store-buttons img {
-      height: 60px;
-    }
-
-    .demo-link {
-      margin-top: 2rem;
-      display: inline-block;
-      padding: 0.75rem 1.5rem;
-      background: var(--accent);
-      color: white;
-      border-radius: 8px;
-      text-decoration: none;
-      font-weight: bold;
-    }
-
-    .demo-link:hover {
-      background: #832e1c;
-    }
-
-    footer {
-      text-align: center;
-      padding: 2rem;
-      font-size: 0.9rem;
-      color: #666;
-    }
-
-    @media (max-width: 600px) {
       header h1 {
-        font-size: 2.2rem;
+        font-size: 3rem;
+        margin-bottom: 0.5rem;
       }
+
+      header p {
+        font-size: 1.25rem;
+        margin: 0;
+      }
+
+      main {
+        padding: 3rem 2rem;
+        text-align: center;
+      }
+
+      .highlight {
+        font-weight: 600;
+        color: var(--terracotta);
+      }
+
+      .store-buttons {
+        margin-top: 2rem;
+      }
+
+      .store-buttons a {
+        display: inline-block;
+        margin: 0.5rem;
+        transition: transform 0.2s;
+      }
+
+      .store-buttons a:hover {
+        transform: scale(1.05);
+      }
+
       .store-buttons img {
-        height: 50px;
+        height: 60px;
       }
-    }
-  </style>
-</head>
+
+      .demo-link {
+        margin-top: 2rem;
+        display: inline-block;
+        padding: 0.75rem 1.5rem;
+        background: var(--accent);
+        color: white;
+        border-radius: 8px;
+        text-decoration: none;
+        font-weight: bold;
+      }
+
+      .demo-link:hover {
+        background: #832e1c;
+      }
+
+      footer {
+        text-align: center;
+        padding: 2rem;
+        font-size: 0.9rem;
+        color: #666;
+      }
+
+      @media (max-width: 600px) {
+        header h1 {
+          font-size: 2.2rem;
+        }
+        .store-buttons img {
+          height: 50px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+
+    <header>
+      <img src="logo.png" alt="Crush Accounting Logo">
+      <h1>Crush Accounting</h1>
+      <p>The fun, addictive game that secretly teaches you accounting</p>
+    </header>
+
+    <main>
+      <p><span class="highlight">Match financial icons</span> like candy, rack up points, and learn real-world accounting concepts while playing.</p>
+      <p><strong>No lectures. Just gameplay.</strong></p>
+
+      <div class="store-buttons">
+        <a href="#" target="_blank">
+          <img src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/en-us?size=250x83" alt="App Store">
+        </a>
+        <a href="#" target="_blank">
+          <img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" alt="Google Play">
+        </a>
+      </div>
+
+      <a href="https://your-streamlit-url-here" class="demo-link" target="_blank">Try the Web Demo</a>
+    </main>
+
+    <footer>
+      &copy; 2025 Gamification State, LLC. All rights reserved.
+    </footer>
+
+  </body>
+</html>
