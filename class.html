@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Class View – Crush Accounting</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #F9F6F1;
+      margin: 0;
+      padding: 2rem;
+      text-align: center;
+    }
+
+    h1 {
+      color: #C1583B;
+    }
+
+    button {
+      margin-top: 2rem;
+      background-color: #C1583B;
+      color: white;
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <h1>Coming Soon...</h1>
+  <p>This page is under construction for class code: <strong id="class-code"></strong></p>
+  <button onclick="window.location.href='dashboard.html'">Back to Dashboard</button>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    document.getElementById('class-code').innerText = params.get('class_code') || 'N/A';
+  </script>
+</body>
+</html>

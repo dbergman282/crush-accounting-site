@@ -1,0 +1,230 @@
+<!-- dashboard.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Instructor Dashboard – Crush Accounting</title>
+  <link rel="icon" type="image/x-icon" href="favicon.ico" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <style>
+    :root {
+      --terracotta: #C1583B;
+      --light-bg: #F9F6F1;
+      --accent: #A6452A;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: var(--light-bg);
+      color: #2E2E2E;
+    }
+
+    header {
+      background: var(--terracotta);
+      color: white;
+      padding: 2rem;
+      text-align: center;
+      position: relative;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2rem;
+    }
+
+    #logout-btn {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background-color: white;
+      color: var(--terracotta);
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 5px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    #logout-btn:hover {
+      background-color: #ffe3d9;
+    }
+
+    main {
+      padding: 2rem;
+      max-width: 800px;
+      margin: auto;
+    }
+
+    h2 {
+      color: var(--terracotta);
+    }
+
+    form {
+      background: #fff7f2;
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--terracotta);
+      margin-bottom: 2rem;
+    }
+
+    form input[type="text"] {
+      width: 100%;
+      padding: 0.75rem;
+      margin: 0.5rem 0;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    form button {
+      background: var(--terracotta);
+      color: white;
+      padding: 0.75rem 1.25rem;
+      border: none;
+      border-radius: 5px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .class-list {
+      background: white;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 1rem;
+    }
+
+    .class-item {
+      border-bottom: 1px solid #eee;
+      padding: 0.5rem 0;
+      cursor: pointer;
+    }
+
+    .class-item:hover {
+      background-color: #fdf0e8;
+    }
+
+    .class-item:last-child {
+      border-bottom: none;
+    }
+
+    .class-link {
+      text-decoration: none;
+      color: inherit;
+      display: block;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Instructor Dashboard</h1>
+    <button id="logout-btn">Logout</button>
+  </header>
+
+  <main>
+    <h2>Welcome!</h2>
+    <p id="user-email"></p>
+
+    <h3>Create a New Class</h3>
+    <form id="create-class-form">
+      <input type="text" id="class-name" placeholder="Enter class name" required />
+      <button type="submit">Create Class</button>
+    </form>
+
+    <h3>Your Classes</h3>
+    <div class="class-list" id="class-list">
+      <p>Loading classes...</p>
+    </div>
+  </main>
+
+  <script>
+    const SUPABASE_URL = 'https://vbutahnefklmcmpygafx.supabase.co';
+    const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZidXRhaG5lZmtsbWNtcHlnYWZ4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTA1MTk5NDgsImV4cCI6MjA2NjA5NTk0OH0.vv5hukawHX2rnKCl2NfSwFy-RYnjoakT6XMAIU3-3-k';
+    const client = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+    window.addEventListener("DOMContentLoaded", async () => {
+      const hashParams = new URLSearchParams(window.location.hash.substring(1));
+      const access_token = hashParams.get('access_token');
+      const refresh_token = hashParams.get('refresh_token');
+
+      if (access_token && refresh_token) {
+        await client.auth.setSession({ access_token, refresh_token });
+        history.replaceState(null, null, window.location.pathname);
+      }
+
+      loadDashboard();
+    });
+
+    async function loadDashboard() {
+      const { data: { user }, error } = await client.auth.getUser();
+
+      if (!user) {
+        window.location.href = 'instructor.html';
+        return;
+      }
+
+      document.getElementById('user-email').innerText = `Logged in as: ${user.email}`;
+
+      const { data, error: classError } = await client
+        .from('classes')
+        .select('*')
+        .eq('user_id', user.id)
+        .order('created_at', { ascending: false });
+
+      const classList = document.getElementById('class-list');
+      classList.innerHTML = '';
+
+      if (classError) {
+        classList.innerHTML = `<p>Error loading classes.</p>`;
+        return;
+      }
+
+      if (!data || data.length === 0) {
+        classList.innerHTML = `<p>You haven't created any classes yet.</p>`;
+        return;
+      }
+
+      data.forEach(cls => {
+        const div = document.createElement('div');
+        div.className = 'class-item';
+        div.innerHTML = `
+          <a class="class-link" href="class.html?class_code=${cls.class_code}">
+            <strong>${cls.class_name}</strong> – Code: <code>${cls.class_code}</code>
+          </a>`;
+        classList.appendChild(div);
+      });
+    }
+
+    document.getElementById('create-class-form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const className = document.getElementById('class-name').value.trim();
+      if (!className) return;
+
+      const { data: { user } } = await client.auth.getUser();
+      const classCode = Math.random().toString(36).substring(2, 8).toUpperCase();
+
+      const { error } = await client.from('classes').insert({
+        user_id: user.id,
+        user_email: user.email,
+        class_name: className,
+        class_code: classCode
+      });
+
+      if (error) {
+        alert('Error creating class.');
+        return;
+      }
+
+      document.getElementById('class-name').value = '';
+      loadDashboard();
+    });
+
+    document.getElementById('logout-btn').addEventListener('click', async () => {
+      await client.auth.signOut();
+      window.location.href = 'instructor.html';
+    });
+  </script>
+</body>
+</html>
