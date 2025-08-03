@@ -1,23 +1,33 @@
-<!DOCTYPE html>
-<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Crush Accounting – Learn Accounting While You Play</title>
+  <link rel="icon" type="image/x-icon" href="favicon.ico" />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <style>
+    :root {
+      --terracotta: #C1583B;
+      --light-bg: #F9F6F1;
+      --accent: #A6452A;
+    }
+
     body {
       margin: 0;
       font-family: 'Poppins', sans-serif;
-      background: #ffffff;
-      color: #333;
+      background: var(--light-bg);
+      color: #2E2E2E;
     }
 
     header {
-      background: linear-gradient(120deg, #f67280, #c06c84);
+      background: var(--terracotta);
       color: white;
       padding: 4rem 2rem;
       text-align: center;
+    }
+
+    header img {
+      width: 100px;
+      margin-bottom: 1rem;
     }
 
     header h1 {
@@ -37,7 +47,7 @@
 
     .highlight {
       font-weight: 600;
-      color: #c06c84;
+      color: var(--terracotta);
     }
 
     .store-buttons {
@@ -62,7 +72,7 @@
       margin-top: 2rem;
       display: inline-block;
       padding: 0.75rem 1.5rem;
-      background: #f67280;
+      background: var(--accent);
       color: white;
       border-radius: 8px;
       text-decoration: none;
@@ -70,14 +80,14 @@
     }
 
     .demo-link:hover {
-      background: #c06c84;
+      background: #832e1c;
     }
 
     footer {
       text-align: center;
       padding: 2rem;
       font-size: 0.9rem;
-      color: #999;
+      color: #666;
     }
 
     @media (max-width: 600px) {
@@ -90,32 +100,3 @@
     }
   </style>
 </head>
-<body>
-
-  <header>
-    <h1>Crush Accounting</h1>
-    <p>The fun, addictive game that secretly teaches you accounting</p>
-  </header>
-
-  <main>
-    <p><span class="highlight">Match financial icons</span> like candy, rack up points, and learn real-world accounting concepts while playing.</p>
-    <p><strong>No lectures. Just gameplay.</strong></p>
-
-    <div class="store-buttons">
-      <a href="#" target="_blank">
-        <img src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/en-us?size=250x83" alt="App Store">
-      </a>
-      <a href="#" target="_blank">
-        <img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" alt="Google Play">
-      </a>
-    </div>
-
-    <a href="https://your-streamlit-url-here" class="demo-link" target="_blank">Try the Web Demo</a>
-  </main>
-
-  <footer>
-    &copy; 2025 Gamification State, LLC. All rights reserved.
-  </footer>
-
-</body>
-</html>
